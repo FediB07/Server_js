@@ -1,0 +1,39 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Data Display</title>
+</head>
+<body>
+  <div id="data-display"></div>
+
+  <script>
+    const socket = new WebSocket('ws://localhost:8080');
+
+    // Keep track of the last received values
+    const lastValues = {};
+
+    socket.addEventListener('message', (event) => {
+      const messageContainer = document.getElementById('data-display');
+      const data = JSON.parse(event.data);
+
+      // Check if the values have changed
+      if (lastValues[data.nodeId + data.type] !== data.value) {
+        // Update the last value for the combination of nodeId and type
+        lastValues[data.nodeId + data.type] = data.value;
+
+        // Create or update a div element for each message
+        let messageDiv = document.getElementById(data.nodeId + data.type);
+        if (!messageDiv) {
+          messageDiv = document.createElement('div');
+          messageDiv.id = data.nodeId + data.type;
+          messageContainer.appendChild(messageDiv);
+        }
+
+        messageDiv.innerHTML = <p> ${data.type} - ${data.value}</p>;
+      }
+    });
+  </script>
+</body>
+</html> -->
